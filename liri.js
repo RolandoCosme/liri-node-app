@@ -2,6 +2,7 @@ debugger;
 var Twitter = require('twitter');
 var Keys = require("./keys.js");
 var spotify = require('spotify');
+var defaultName = process.argv[3];
 
 switch(process.argv[2]) {
   case "my-tweets":
@@ -35,9 +36,16 @@ function getTweets(){
 };
 
 function getSpotify(){
-  spotify.search({ type: 'track', query: (process.argv[3]) }, function(err, data) {
+  spotify.search({ type: 'track', query: (defaultName)}, function(err, data) {
+  //   if (data.tracks.items[0].name === 'undefined'){
+  //   spotify.search({ type: 'track', query: "What's my age again"});
+  //   console.log("this is crap");
+  // }
     if (err) {
+        defaultName = "What's my age again";
+        getSpotify();
         console.log('Error occurred: ' + err);
+        console.log("Artist: " +data.tracks.items[0].artists[0].name);
         return;
         }
     else if (data) {
