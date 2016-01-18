@@ -1,10 +1,14 @@
 debugger;
 var Twitter = require('twitter');
 var Keys = require("./keys.js");
+var Spotify = require('spotify');
 
 switch(process.argv[2]) {
   case "my-tweets":
     getTweets();
+    break;
+  case "spotify-this-song":
+    getSpotify();
     break;
   };
 
@@ -28,3 +32,25 @@ function getTweets(){
     };
   });
 };
+
+function getSpotify(){
+  if (fourthItem = "undefined") {
+      fourthItem = "what's my age again"
+    }; 
+  Spotify.search({ type: 'track', query: fourthItem }, function(err, data) {
+    if ( err ) {
+        console.log('Error occurred: ' + err);
+        return;
+    } else if (!err) {
+      console.log("Are any of these songs what you are looking for?");
+      console.log("");
+      for (var i = 0; i < data.tracks.items.length; i++) {
+        console.log("Song: " +data.tracks.items[i].name);
+        console.log("Artist: " +data.tracks.items[i].artists[0].name);
+        console.log("Album: "+data.tracks.items[i].album.name);
+        console.log("Link: "+data.tracks.items[i].href);
+        console.log("");
+        };
+      };
+    });
+  };
