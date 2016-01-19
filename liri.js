@@ -15,6 +15,7 @@ switch(process.argv[2]) {
 
 
 function getTweets(){
+  //var client = new Twitter(Keys);
   var client = new Twitter({
     consumer_key: 'KqkB0kmAhHDQq7dnRX2rHtSla',
     consumer_secret: 'iOi3bKl35Gttm0LIfGkWbxovZ8KezZ5u1Kmjk9gvD4q9Ou9U3l',
