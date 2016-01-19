@@ -44,7 +44,7 @@ function getSpotify(){
   // }
     if (err) {
         defaultName = "What's my age again";
-        getSpotify();
+        //getSpotify();
         console.log('Error occurred: ' + err);
         console.log("Artist: " +data.tracks.items[0].artists[0].name);
         return;
